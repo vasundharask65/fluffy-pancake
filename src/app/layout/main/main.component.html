@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Plantsy</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <div class="d-flex justity-content-around">
+        <div>
+          <fa-icon [icon]="faWishlist" class="fa-icon me-3"></fa-icon>
+          <span class="icon-badge-wishlist">{{ wishlistCount }}</span>
+        </div>
+        <div>
+          <fa-icon
+            [icon]="faCart"
+            class="fa-icon me-3"
+            (click)="showProducts()"
+          ></fa-icon>
+          <span class="icon_badge-cart">{{ cartCount }}</span>
+          <div
+            class="product-details overflow-auto"
+            [ngClass]="{ 'no-show': isShow }"
+          >
+            <ul *ngFor="let item of productCart">
+              <li class="product-cart">{{ item.title }} - ${{ item.price }}</li>
+            </ul>
+            <div>Total Amount: ${{ cartTotal }}</div>
+            <button
+              class="btn btn-sm btn-primary"
+              type="submit"
+              [routerLink]="cartDetailPath"
+              routerLinkActive="router-link-active"
+            >
+              Buy now!!
+            </button>
+          </div>
+        </div>
+        <button
+          class="btn btn-outline-light"
+          type="submit"
+          [routerLink]="logoutPath"
+          routerLinkActive="router-link-active"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+<app-dashboard
+  (addProduct)="addProductToCart($event)"
+  (addWishListProduct)="addProductToWishlist($event)"
+></app-dashboard>
+<router-outlet></router-outlet>

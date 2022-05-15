@@ -1,0 +1,28 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-md-5">
+    <div class="login" id="login">
+      <div class="head">
+        <h1 class="company">Plantsy</h1>
+      </div>
+      <p class="msg">Welcome back!!</p>
+      <div class="form">
+        <form>
+          <input
+            type="text"
+            placeholder="Username"
+            class="text"
+            id="username"
+            required=""
+          /><br />
+          <input
+            type="password"
+            placeholder="Password"
+            class="password"
+          /><br />
+          <a href="#" class="btn-login" id="do-login" [routerLink]="dashboardPath" routerLinkActive="router-link-active" >Login</a>
+          <a href="#" class="forgot">Forgot Password?</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
